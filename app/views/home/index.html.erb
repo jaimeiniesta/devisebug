@@ -1,0 +1,10 @@
+<h1>route_translator / devise bug</h1>
+<p>This app shows the issue reported on <a href="https://github.com/enriclluelles/route_translator/issues/106">route_translator#106</a></p>
+
+<% if user_signed_in? %>
+  <%= t 'hello' %>, <%= current_user.email %>!
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+<% else %>
+  <p>Try to sign in (in :es locale), enter a bad password, the flash message should be in Spanish. But it always takes the default locale.</p>
+  <%= link_to 'Sign in', new_user_session_path %>
+<% end %>
